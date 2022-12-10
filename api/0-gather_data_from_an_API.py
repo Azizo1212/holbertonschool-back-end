@@ -11,7 +11,7 @@ if __name__ == "__main__":
 
     userId = argv[1]
     user = requests.get("https://jsonplaceholder.typicode.com/users/{}"
-                       .format(userId))
+                        .format(userId))
     name = user.json().get('name')
     todos = requests.get('https://jsonplaceholder.typicode.com/todos')
 
@@ -23,5 +23,6 @@ if __name__ == "__main__":
 
     print('Employee {} is done with tasks({}/{}):'
           .format(name, completed, totalTasks))
+
     print('\n'.join(["\t " + task.get('title') for task in todos.json()
           if task.get('userId') == int(userId) and task.get('completed')]))
